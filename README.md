@@ -1,24 +1,25 @@
 # Statuttendring
 
-Standalone Svelte app for reviewing Samfunnet i Bergen's statutes and preparing
-amendment proposals. The original author was Morten Stene.
+Plain HTML app for reviewing Samfunnet i Bergen's statutes and preparing
+amendment proposals, written by Morten Stene.
+
+`index.html` is restored unchanged from
+[the original app](https://github.com/Mortey12/Mortey12.github.io/blob/3b6f0277c7e28da5cadd38d29ae7e84821b52e32/Samf-statutter/index.html).
 
 The app is hosted at [statuttendring.samfunnetibergen.no](https://statuttendring.samfunnetibergen.no).
 
 ## Local development
 
-Requires Node.js 22.12 or later.
+Serve the repository with any static HTTP server, for example:
 
 ```sh
-npm ci
-npm run dev
+python3 -m http.server 8000
 ```
 
-Create the production files with `npm run build`; Vite writes them to `dist/`.
-
-The statutes are stored in `src/lib/statuttar.json`, and the Word form template
-is in `public/statuttendringsskjema.docx`. Drafts are stored in the visitor's
-browser and can be exported or imported as JSON files.
+Open `http://localhost:8000`. No build or package installation is required.
+The statutes, styles, application code, and Word form template are embedded in
+`index.html`. JSZip and fonts load from their public CDNs. Drafts are stored in
+the visitor's browser and can be exported or imported as JSON files.
 
 ## Deploy to Azure Static Web Apps
 
@@ -31,7 +32,8 @@ Sign in to Azure CLI with an account that can deploy to this resource. From the
 repository root, run:
 
 ```sh
-npm run build
+mkdir -p dist
+cp index.html dist/index.html
 SWA_CLI_DEPLOYMENT_TOKEN="$(az staticwebapp secrets list \
   --name samfunnet-statutter \
   --resource-group rg-samfunnet-statutter \
