@@ -28,8 +28,17 @@ The Azure resource is `samfunnet-statutter`, in resource group
 `black-river-05d6a6903.6.azurestaticapps.net`; the custom hostname is
 `statuttendring.samfunnetibergen.no`.
 
-Sign in to Azure CLI with an account that can deploy to this resource. From the
-repository root, run:
+Pushes to `main` automatically deploy through the
+[Deploy to Azure workflow](https://github.com/kvarteret/statuttendring/actions/workflows/deploy-azure.yml).
+It can also be run manually on `main` from GitHub Actions. The job uploads only
+`index.html` and verifies that the public site matches the committed file.
+
+The workflow uses the repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN`,
+containing the deployment token for `samfunnet-statutter`. If the token is
+rotated in Azure, update this GitHub Actions secret as well.
+
+To deploy manually from your computer, sign in to Azure CLI with an account
+that can deploy to this resource. From the repository root, run:
 
 ```sh
 mkdir -p dist
