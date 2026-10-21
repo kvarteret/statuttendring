@@ -82,6 +82,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .toc .n { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
 main { min-width: 0; padding: 20px 24px 80px; }
 .intro { max-width: 70ch; margin: 6px 0 18px calc(var(--gutter) + 20px); font-size: .92rem; color: var(--muted); }
+.narrow-txt { display: none; }
 .cols, .row, .ins, .foot { display: grid; grid-template-columns: var(--gutter) 1fr 1fr; gap: 0 20px; }
 .cols { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--barh, 70px)); z-index: 10; padding: 10px 0 8px; background: var(--bg); border-bottom: 1px solid var(--rule); font-size: .84rem; font-weight: 600; }
 .cols span:first-child { grid-column: 2; }
@@ -162,6 +163,8 @@ ins { background: var(--ins-bg); color: var(--ins); text-decoration: none; borde
   .num { padding-top: 0; text-align: left; font-size: 1.15rem; }
   .num small { display: inline; margin-left: 8px; }
   .chap, .intro, .empty-note { margin-left: 0; }
+  .wide-txt { display: none; }
+  .narrow-txt { display: inline; }
   .author { width: 100%; }
   .author input { flex: 1; width: auto; }
   .cell.orig::before, .cell.prop::before { display: block; margin-bottom: 4px; font: .75rem var(--sans); color: var(--muted); }
@@ -203,7 +206,7 @@ ins { background: var(--ins-bg); color: var(--ins); text-decoration: none; borde
 <div class="wrap">
   <nav class="toc" id="toc" aria-label="Kapittel"></nav>
   <main id="main">
-    <p class="intro">Klikk på ein paragraf i høgre kolonne for å skriva eit forslag. Det du skriv, blir lagra i nettlesaren din.</p>
+    <p class="intro"><span class="wide-txt">Klikk på ein paragraf i høgre kolonne for å skriva eit forslag.</span><span class="narrow-txt">Trykk på feltet «Forslag» under ein paragraf for å skriva eit forslag.</span> Det du skriv, blir lagra i nettlesaren din.</p>
     <div class="cols" aria-hidden="true"><span>Gjeldande</span><span>Forslag</span></div>
     <div id="doc"></div>
     <p class="empty-note" id="emptyNote" hidden>Ingen endringar enno.</p>
